@@ -52,6 +52,6 @@ for item in plagiat['items'] :
 
 # Call main engine for search plagiat
 print("\nGo to plagiat fiesta")
-os.system('python3 main.py ./temp js')
+os.system('python3 engine.py ./tmp js')
 
 

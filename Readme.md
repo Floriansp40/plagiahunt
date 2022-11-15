@@ -22,7 +22,7 @@ Etape 3: activez l'environnement virtuel avec la commande appropriée ``source e
 
 Etape 4 : installez au projet les packages requis ; ceux-ci sont fournis dans le fichier ``requirements.txt`` La commande suivante le fera : ``pip install -r requirements.txt``.
 
-Etape 5 : créer et récupérer votre token d'accès pour github et le pacer dans le fichier env
+Etape 5 : créer et récupérer votre token d'accès pour github et le placer dans le fichier env
 
 ### Exécuter le script
 ``python3 main.py "une chaine de recherce" js``vous permettra de lancer le script et de faire une recherche avec récupération des fichiers sur github pour des fichier en js.
