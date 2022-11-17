@@ -1,6 +1,11 @@
 # Un outil de comparaison de fichiers
 
-Projet en console pour comparer le contenu de fichiers et afficher le pourcentage de ressemblances.
+Projet en console pour :
+- Faire une recherche de termes sur github
+- Comparer le contenu de fichiers
+- Faire une recherche par rapport à un fichier
+
+Et afficher le pourcentage de ressemblace.
 
 ## Contenu
 
@@ -16,7 +21,7 @@ Un script Python avec utilisation de [Sklearn](https://scikit-learn.org/stable/)
 
 Etape 1: clonez le projet.
 
-Etape 2: naviguez dans le dossier avec la commande ``cd plagiarism_checker`` puis installez dans le répertoire un environnement virtuel (avec [pipenv](https://docs.python-guide.org/dev/virtualenvs/), ou avec [venv et pip](https://docs.python.org/fr/3/library/venv.html)).
+Etape 2: naviguez dans le dossier avec la commande ``cd plagiahunt`` puis installez dans le répertoire un environnement virtuel (avec [pipenv](https://docs.python-guide.org/dev/virtualenvs/), ou avec [venv et pip](https://docs.python.org/fr/3/library/venv.html)).
 
 Etape 3: activez l'environnement virtuel avec la commande appropriée ``source env/bin/activate``
 
@@ -25,9 +30,8 @@ Etape 4 : installez au projet les packages requis ; ceux-ci sont fournis dans le
 Etape 5 : créer et récupérer votre token d'accès pour github et le placer dans le fichier env
 
 ### Exécuter le script
-``python3 main.py "une chaine de recherce" js``vous permettra de lancer le script et de faire une recherche avec récupération des fichiers sur github pour des fichier en js.
-
-
+Toutes les commandes utiles ainsi que leur description sont dans le message d'aide.
+Pour l'afficher il suffit de lancer ``python3 main.py``
 
 
 ## Utilisateur
