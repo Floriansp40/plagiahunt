@@ -1,9 +1,13 @@
 import os
 import sys
+from termcolor import colored, cprint
+
 from sklearn.feature_extraction.text import TfidfVectorizer # Permet de calculer la fréquence d'apparition de mots proportionnellement au nombre de documents comparés 
 from sklearn.metrics.pairwise import cosine_similarity # On importe le comparateur cosine similarity
 
+print(sys.argv)
 sample_files = [doc for doc in os.listdir(sys.argv[1]) if doc .endswith("."+sys.argv[2])] # On indique l'extension des documents comparés et le dossier dans lequel on va chercher
+#sample_files = [doc for doc in os.listdir(sys.argv[1]) if doc .endswith("."+sys.argv[2])]
 sample_contents = [open(sys.argv[1]+'/'+file).read() for file in sample_files] # on créé une boucle pour lire chaque documents
 
 # La fréquence d'apparition des mots est passée en argument Text ; argument converti en tableau ensuite.
@@ -14,6 +18,7 @@ similarity = lambda doc1, doc2: cosine_similarity([doc1, doc2])
 
 vectors = vectorize(sample_contents) # on applique la méthode vectorize sur le contenu des documents 
 s_vectors = list(zip(sample_files, vectors)) # on créé un tuple avec les documents et les vecteurs respectifs
+
 
 def check_plagiarism():
     results = set()
@@ -30,6 +35,21 @@ def check_plagiarism():
             results.add(score)
     return results
 
+# Function to format display
+def displayData(data):
+    if data[2] > 0.6:
+        cprint(data, "yellow", "on_red", attrs=['bold'])
+    elif data[2] > 0.5 and data[2] < 0.61 :
+        cprint(data, "yellow")
+    else:
+        print(data)
 
 for data in check_plagiarism():
-    print(data)
+    if sys.argv[3] == 'simple':
+        displayData(data)
+    else:
+        if data[0] != "origin."+sys.argv[2] and data[1] != "origin."+sys.argv[2]:
+            continue
+        
+        displayData(data)
+   
