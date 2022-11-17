@@ -22,10 +22,11 @@ Un script Python avec utilisation de [Sklearn](https://scikit-learn.org/stable/)
 Etape 1: clonez le projet.
 
 Etape 2: naviguez dans le dossier avec la commande ``cd plagiahunt`` puis installez dans le répertoire un environnement virtuel (avec [pipenv](https://docs.python-guide.org/dev/virtualenvs/), ou avec [venv et pip](https://docs.python.org/fr/3/library/venv.html)).
+I.e ``python3 -m venv env``
 
 Etape 3: activez l'environnement virtuel avec la commande appropriée ``source env/bin/activate``
 
-Etape 4 : installez au projet les packages requis ; ceux-ci sont fournis dans le fichier ``requirements.txt`` La commande suivante le fera : ``pip install -r requirements.txt``.
+Etape 4 : installez au projet les packages requis ; ceux-ci sont fournis dans le fichier ``requirements.txt`` La commande suivante le fera : ``pip3 install -r requirements.txt``.
 
 Etape 5 : créer et récupérer votre token d'accès pour github et le placer dans le fichier env
 
