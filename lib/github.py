@@ -11,16 +11,48 @@ load_dotenv(dotenv_path)
 
 # Call github API with search term
 def githubSearch(term, type):
-    query = term+"+in:file+language:"+type+"&page=1"
-    myHeaders = {
-        "Accept": "application/vnd.github+json",
-        "Authorization": "Bearer {}".format(os.environ.get('TOKEN'))
-    }
+    again = True # Loop control
+    first = True # first résult flag
+    page = 1 # pagination
 
-    res = requests.get(os.environ.get("GITHUB_API").format(query), headers=myHeaders)
-    print(res.status_code)
-    #print(json.loads(res.text))
-    return json.loads(res.text)
+    while again:      
+        # Control for GitHub RateLimit          
+        if res.status_code != 200:
+            print("Github API stop with code : {}".format(res.status_code))
+            if first:
+                raise SystemExit
+            else:
+                return results
+
+        # Result at JSON format 
+        rjson = json.loads(res.text)
+
+        # Question according the first result count (total count)
+        if first:
+            print("Github gave us {} result(s)".format(rjson['total_count']))
+            answer = input("\nLet's Go ? [Yes|no] ")
+            if answer.lower() in ['n', 'no'] :
+                raise SystemExit
+
+        print("Retrieved results : {}".format(len(rjson['items'])))
+
+        # Concatenation
+        if first:
+            results = rjson
+            first = False
+        else:
+            results['items'] += rjson['items']
+
+        if len(rjson['items']) < 30:
+            print("FIN DE LISTE")
+            again = False
+        else:
+            print("ON CONTINU")
+            time.sleep(1.5)
+            page += 1
+
+    print("SORTIE")
+    return results
 
 # Function to download file by url
 def downloadFile(url):
